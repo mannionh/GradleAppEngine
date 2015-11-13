@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="sampleapp">
+  <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+     <script src="https://code.angularjs.org/1.4.7/angular-resource.min.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+ 
+  <body>
+    <form ng-controller="GuestBookController" ng-Submit="createMessage();">
+    
+    <legend>Add New Message</legend>
+ 
+      <label>Email: </label> 
+      <input type="text" id="email" name="email" ng-model="message.author_email" placeholder=""> 
+ 
+      <label>User Name:</label>
+      <input type="text" id="userName" name="userName" ng-model="message.author_id" placeholder="">
+      
+      <label>Message:</label>
+      <input type="textarea" id="message" name="message" ng-model="message.content" placeholder="">
+ 
+       <input type="submit" id="submit" value="Submit" />
+       
+      <br/>
+      <label>{{messages}}</label>
+    </form>
+  </body>
+ 
+</html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+
+ <filter>
+        <filter-name>guiceFilter</filter-name>
+        <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>guiceFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+	<!-- Configures the Guice injector -->
+    <listener>
+        <listener-class>com.howard.test.MyServletContextListener</listener-class>
+    </listener>
+    
+    <listener>
+	  <listener-class>com.howard.test.helpers.ObjectifyHelper</listener-class>
+	</listener>
+
+
+<!--servlet>
+		<description>
+			This is the description for the sample servlet
+		</description>
+		<display-name>Sample display name</display-name>
+		<icon>
+			<small-icon>icons/small.gif</small-icon>
+			<large-icon>icons/small.gif</large-icon>
+		</icon>
+		<servlet-name>AppEngineTestServlet</servlet-name>
+		<servlet-class>com.howard.test.AppEngineTestServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<description>
+			This is the description for the sample servlet
+		</description>
+		<display-name>Sample display name</display-name>
+		<icon>
+			<small-icon>icons/small.gif</small-icon>
+			<large-icon>icons/small.gif</large-icon>
+		</icon>
+		<servlet-name>SignGuestbookServlet</servlet-name>
+		<servlet-class>com.howard.test.SignGuestbookServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+	  <description>Hello World Service</description>
+	  <servlet-name>HelloWorldServlet</servlet-name>
+	  <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>  
+	  <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+	   <param-value>com.howard.test</param-value>
+	  </init-param>
+	  <init-param>
+	   <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+	   <param-value>true</param-value>
+	  </init-param>
+	  <init-param>
+	   <param-name>com.sun.jersey.config.feature.DisableWADL</param-name>
+	   <param-value>true</param-value>
+	  </init-param>
+	  <load-on-startup>1</load-on-startup>
+	 </servlet>
+	 
+	 <servlet-mapping>
+	  <servlet-name>HelloWorldServlet</servlet-name>
+	  <url-pattern>/api/*</url-pattern>
+	 </servlet-mapping>
+	
+		
+	<servlet-mapping>
+        <servlet-name>SignGuestbookServlet</servlet-name>
+        <url-pattern>/sign</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>AppEngineTestServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    
+    <filter>
+	  <filter-name>ObjectifyFilter</filter-name>
+	  <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  <filter-name>ObjectifyFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+	  <listener-class>com.howard.test.helpers.ObjectifyHelper</listener-class>
+	</listener -->
+    
+</web-app>

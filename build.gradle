@@ -1,0 +1,90 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'appengine'
+
+
+sourceCompatibility = 1.7
+version = 1.0
+
+def appId = "appenginesample" 
+def appEmail = ""
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.27'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+	appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.28'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile group: 'com.google.appengine', name: 'appengine-api-1.0-sdk' , version: '1.9.28' 
+    compile group: 'com.googlecode.objectify', name: 'objectify' , version: '4.0.1'
+    compile group: 'jstl',  name: 'jstl' , version: '1.2' 
+    compile group: 'javax.servlet', name: 'servlet-api' , version: '2.5' 
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0.1' 
+    compile 'org.glassfish.jersey.core:jersey-server:2.22.1'
+    compile 'org.glassfish.jersey.core:jersey-common:2.22.1'
+    compile 'org.glassfish.jersey.containers:jersey-container-servlet-core:2.22.1'
+    compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.22.1'
+    compile 'com.google.inject:guice:4.0'
+    compile 'com.google.inject.extensions:guice-servlet:4.0'
+   	compile 'org.glassfish.jersey.ext:project:2.22.1'
+   	compile 'org.glassfish.hk2:guice-bridge:2.4.0-b33'
+   	
+   	    
+    
+}
+
+
+ appengineUpdate {
+	javax.net.ssl.SSLContext sc  = javax.net.ssl.SSLContext.getInstance("SSL");
+	sc.init(null, (javax.net.ssl.X509TrustManager[])[new TrustAllCerts()], new java.security.SecureRandom());
+	javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+}
+
+
+appengine {
+  httpPort = 8888
+  downloadSdk = true
+  disableUpdateCheck = true
+  appcfg {
+  	
+  	passIn = true
+  	//password = '3'
+    oauth2 = true
+    app {
+    	id = 'static-mile-109315'
+    }
+  }
+}
+
+
+class TrustAllCerts implements javax.net.ssl.X509TrustManager {
+
+        public void checkClientTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+                        throws java.security.cert.CertificateException {
+        }
+
+        public void checkServerTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+                        throws java.security.cert.CertificateException {
+        }
+
+		@Override
+		public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+			return null;
+		}
+
+}
+
